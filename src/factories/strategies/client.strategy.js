@@ -11,7 +11,7 @@ import Strategy from './strategy.js';
 /**
  * internal helpers
  */
-import { getUniqueFlatArr } from '../../helpers/arr.helpers.js';
+import { getUniqueFlatArr } from '../../helpers/array.helpers.js';
 
 export default class ClientStrategy extends Strategy {
 	constructor(funcString = '') {

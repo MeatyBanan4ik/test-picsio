@@ -17,7 +17,7 @@ import TransportFactory from '../factories/transport.factory.js';
 /**
  * internal helpers
  */
-import { getUniqueFlatArr } from '../helpers/arr.helpers.js';
+import { getUniqueFlatArr } from '../helpers/array.helpers.js';
 
 const logger = log4js.getLogger('EventService');
 

@@ -10,9 +10,11 @@ import Transport from './transport.js';
 
 export default class HttpTransport extends Transport {
 	async send(destination, payload = {}) {
+		const requestMethod = this.method === 'get' ? 'searchParams' : 'json';
+
 		got(destination.url, {
 			method: this.method,
-			[this.method === 'get' ? 'searchParams' : 'json']: payload,
+			[requestMethod]: payload,
 			throwHttpErrors: false,
 		});
 	}

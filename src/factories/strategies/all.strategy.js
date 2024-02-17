@@ -6,7 +6,7 @@ import Strategy from './strategy.js';
 /**
  * internal helpers
  */
-import { getUniqueFlatArr } from '../../helpers/arr.helpers.js';
+import { getUniqueFlatArr } from '../../helpers/array.helpers.js';
 
 export default class AllStrategy extends Strategy {
 	async getDestinations(possibleDestinations = []) {
