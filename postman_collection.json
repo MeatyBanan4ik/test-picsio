@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "b838ffc4-f4a4-4376-afb5-27e513d1ca8a",
+		"name": "Pics.io Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17560708"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"pm.globals.set('access_token', data.access_token);",
+									"pm.globals.set('refresh_token', data.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{auth_email}}\",\n    \"password\": \"{{auth_password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/auth/login",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"admin\",\n    \"email\": \"admin@te.st\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/auth/register",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"pm.globals.set('access_token', data.access_token);",
+									"pm.globals.set('refresh_token', data.refresh_token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh_token\": \"{{refresh_token}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/auth/token/refresh",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"auth",
+								"token",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Send",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"payload\": { \"a\": 3},\n\t\"possibleDestinations\": [\n\t\t{\n\t\t\t\"destination1\": true,\n\t\t\t\"destination2\": true,\n\t\t\t\"destination3\": true\n\t\t}, \n\t\t{\n\t\t\t\"destination1\": false,\n\t\t\t\"destination3\": false\n\t\t},\n\t\t{\n\t\t\t\"destination1\": true,\n\t\t\t\"destination2\": false,\n\t\t\t\"destination4\": false\n\t\t},\n\t\t{\n\t\t\t\"destination5\": true\n\t\t}\n\t],\n    \"strategy\": \"() => { return true; }\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/events/send",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"events",
+								"send"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "api_url",
+			"value": "{{base_url}}/api",
+			"type": "string"
+		},
+		{
+			"key": "auth_email",
+			"value": "admin@te.st",
+			"type": "string"
+		},
+		{
+			"key": "auth_password",
+			"value": "admin",
+			"type": "string"
+		}
+	]
+}

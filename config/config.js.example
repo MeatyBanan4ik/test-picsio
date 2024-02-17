@@ -1,0 +1,44 @@
+import { STRATEGIES } from '../src/constants/event.constants.js';
+
+export default {
+	version: 1,
+	env: {
+		appKey: '',
+		jwtAlgorithm: 'HS256',
+		passwordSaltRounds: 10,
+	},
+	defaultStrategy: STRATEGIES.ALL,
+	defaultDestinations: [
+		{
+			name: 'destination1',
+			transport: 'http.post',
+			url: 'https://example.com/destination1',
+		},
+		{
+			name: 'destination2',
+			transport: 'http.post',
+			url: 'https://example2.com/destination2',
+		},
+		{
+			name: 'destination3',
+			transport: 'console.log',
+		},
+		{
+			name: 'destination4',
+			transport: 'console.warn',
+		},
+	],
+	http: {
+		host: '::',
+		port: 3000,
+	},
+	db: 'mongodb://mongo:27017/test-picsio',
+	logger: {
+		appenders: {
+			console: { type: 'console' },
+		},
+		categories: {
+			default: { appenders: ['console'], level: 'all' },
+		},
+	},
+};
