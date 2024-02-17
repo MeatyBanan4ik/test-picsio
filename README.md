@@ -48,10 +48,65 @@ yarn dev
 
 #### Endpoints
 
-- Login: ``/auth/login`` method: ``POST``
-- Register: ``/auth/register`` method: ``POST``
-- Refresh: ``/auth/refresh`` method: ``POST``
-- Send event: ``/events/send`` method: ``POST``
+1. **Login**:
+ - URI: ``/auth/login`` 
+ - Method: ``POST``
+ - Body:
+```json
+{ 
+   "email": "ad@min.test", 
+   "password": "admin"
+}
+```
+2. **Register**: 
+ - URI: ``/auth/register`` 
+ - Method: ``POST``
+ - Body: 
+```json
+{ 
+   "email": "ad@min.test", 
+   "name": "admin", 
+   "password": "admin"
+}
+```
+3. **Refresh**: 
+ - URI: ``/auth/refresh`` 
+ - Method: ``POST``
+ - Body: 
+```json
+{ 
+   "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlLnN0IiwiaWF0IjoxNzA4MTk0NjU3LCJleHAiOjE3MDg3OTk0NTd9.GkfaLiCsHFYjQmy9Gx0Ez0WU4iSmF86TywaOUbz5YQw"
+}
+``` 
+4. **Send event**: 
+ - URI: ``/events/send`` 
+ - Method: ``POST``
+ - Body:
+```json
+{ 
+   "payload": { 
+      "a": 3 
+   }, 
+   "possibleDestinations": [
+      { 
+         "destination1": true, 
+         "destination2": true, 
+         "destination3": true  
+      },  
+      { 
+         "destination1": false, 
+         "destination3": false  
+      },  
+      { 
+         "destination1": true, 
+         "destination2": false, 
+         "destination4": false  
+      },  
+      { "destination5": true  } 
+   ], 
+   "strategy": "() => { return true; }"
+}
+```
 
 ### Technologies
 1. [Node.js](https://nodejs.org/)
@@ -59,3 +114,4 @@ yarn dev
 3. [Express.JS](https://expressjs.com/)
 4. [Mongoose](https://mongoosejs.com/)
 5. [Got](https://github.com/sindresorhus/got)
+6. [Log4JS](https://log4js-node.github.io/log4js-node/)
