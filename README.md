@@ -115,3 +115,4 @@ yarn dev
 4. [Mongoose](https://mongoosejs.com/)
 5. [Got](https://github.com/sindresorhus/got)
 6. [Log4JS](https://log4js-node.github.io/log4js-node/)
+7. [ValidatorJS](https://github.com/mikeerickson/validatorjs)
