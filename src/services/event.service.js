@@ -22,6 +22,12 @@ import { getUniqueFlatArr } from '../helpers/array.helpers.js';
 const logger = log4js.getLogger('EventService');
 
 export default class PostService {
+	/**
+	 * @param possibleDestinations {String[]}
+	 * @param payload {Object}
+	 * @param strategy {String | undefined}
+	 * @returns {Promise<Array>}
+	 */
 	async send(possibleDestinations = [], payload = {}, strategy = '') {
 		const Strategy = new StrategyFactory(strategy);
 
@@ -42,6 +48,12 @@ export default class PostService {
 		);
 	}
 
+	/**
+	 *
+	 * @param destinations {String[]}
+	 * @param payload {Object}
+	 * @returns {Promise<Awaited<Object>[]>}
+	 */
 	async sendToDestinations(destinations = [], payload = {}) {
 		return Promise.all(
 			destinations.map(async destination => {
